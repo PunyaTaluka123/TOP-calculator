@@ -1,37 +1,29 @@
-let num1
-let operator
-let num2
 
-function operate(num1, operator, num2){
-    switch (operator){
-        case "+":
-            return add(num1, num2)
-        case "-":
-            return subtract(num1, num2)
-        case "*":
-            return multiply(num1, num2)
-        case "/":
-            return divide(num1, num2) 
-    }
+let display = document.getElementById('display');
+let currentInput = '';
+
+//get Numbers
+function appendNumber(number) {
+	currentInput += number;
+	display.textContent = currentInput;
+}
+function appendOperator(operator) {
+	currentInput += operator;
+	display.textContent = currentInput;
 }
 
-
-
-
-
-
-function add(num1, num2){
-    return num1 + num2
+function clearDisplay() {
+	currentInput = '';
+	display.textContent = '';
 }
+function calculate() {
+	try {
+	  let result = eval(currentInput);
+	  display.textContent = result;
+	  currentInput = result.toString(); // Update currentInput for continued calculations
+	} catch (error) {
+	  display.textContent = 'Error';
+	}
+  }
 
-function subtract(num1, num2){
-    return num1-num2
-}
 
-function multiply(num1, num2){
-    return num1*num2
-}
-
-function divide(num1, num2){
-    return num1/num2
-}
